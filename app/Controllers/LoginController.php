@@ -21,26 +21,3 @@ class Login extends BaseController
 
     }
 }
-
-class Beranda extends BaseController
-{
-    public function Halaman_Dinamis()
-    {
-
-    }
-
-    public function Sistem_Komentar()
-    {
-
-    }
-
-    public function Pencarian()
-    {
-
-    }
-
-    public function Kontrol_Akses_Pengguna()
-    {
-
-    }
-}
