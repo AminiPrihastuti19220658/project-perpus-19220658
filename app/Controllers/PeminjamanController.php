@@ -9,62 +9,46 @@ class PeminjamanController extends BaseController
 {
     public function index()
     {
-        // Menampilkan daftar pengguna
-        $model = new PeminjamanModel();
-        $data['peminjaman'] = $model->findAll();
-
-        return view('peminjaman/index', $data);
+        return view('peminjaman/table', [
+            'daftar_peminjaman' => (new PeminjamanModel()) ->findAll()
+        ]);
     }
 
     public function create()
     {
-        // Menampilkan form tambah pengguna
-        return view('peminjaman/create');
-    }
-
-    public function store()
-    {
-        // Menyimpan data pengguna baru
-        $model = new PeminjamanModel();
         $data = [
-            'username' => $this->request->getPost('username'),
-            'password' => $this->request->getPost('password'),
-            'email'    => $this->request->getPost('email'),
+            'tgl_peminjaman' => $this->request->getPost('tgl_peminjaman'),
+            'tgl_pengembalian' => $this->request->getPost('tgl_pengembalian'),
+            'denda' => $this->request->getPost('denda'),
         ];
-        $model->insert($data);
 
-        return redirect()->to('/peminjaman');
+        $model = new PeminjamanModel();
+        $id = (int)$this->request->getPost('id');
+
+        if($id > 0){
+            $model->update($id, $data);
+        }else{
+            $model->insert($data);
+        }
+
+        return redirect()->to(base_url('peminjaman'));
     }
 
-    public function edit($id)
-    {
-        // Menampilkan form edit pengguna
-        $model = new PeminjamanModel();
-        $data['peminjaman'] = $model->find($id);
-
-        return view('peminjaman/edit', $data);
+    public function form(){
+        return view('peminjaman/form');
     }
 
-    public function update($id)
-    {
-        // Memperbarui data pengguna
-        $model = new PeminjamanModel();
-        $data = [
-            'username' => $this->request->getPost('username'),
-            'password' => $this->request->getPost('password'),
-            'email'    => $this->request->getPost('email'),
-        ];
-        $model->update($id, $data);
-
-        return redirect()->to('/peminjaman');
+    public function edit($id){
+        $r = (new PeminjamanModel())->where('id', $id)->first();
+        return view('peminjaman/form', [
+            'data' => $r
+        ]);
     }
 
-    public function delete($id)
-    {
-        // Menghapus pengguna
-        $model = new PeminjamanModel();
-        $model->delete($id);
-
-        return redirect()->to('/peminjaman');
+    public function hapus(){
+        $id = $this->request->getPost('id');
+        $m = new PeminjamanModel();
+        $m->delete($id);
+        return redirect()->to(base_url('peminjaman'));
     }
 }

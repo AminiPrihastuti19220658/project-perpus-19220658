@@ -13,7 +13,7 @@ class PeminjamanModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['tgl_peminjaman','tgl_pengembalian','tb_penggunaa_id_peminjaman','tb_penggunaa_id_pengembalian','tb_anggotaa_id','tb_koleksibuku_id','denda'];
+    protected $allowedFields    = ['*'];
 
     // Dates
     protected $useTimestamps = false;

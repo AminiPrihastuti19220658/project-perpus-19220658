@@ -9,62 +9,45 @@ class KategoriController extends BaseController
 {
     public function index()
     {
-        // Menampilkan daftar pengguna
-        $model = new KategoriModel();
-        $data['kategori'] = $model->findAll();
-
-        return view('kategori/index', $data);
+        return view('kategorii/table', [
+            'daftar_kategorii' => (new KategoriModel()) ->findAll()
+        ]);
     }
 
     public function create()
     {
-        // Menampilkan form tambah pengguna
-        return view('kategori/create');
-    }
-
-    public function store()
-    {
-        // Menyimpan data pengguna baru
-        $model = new KategoriModel();
         $data = [
-            'username' => $this->request->getPost('username'),
-            'password' => $this->request->getPost('password'),
-            'email'    => $this->request->getPost('email'),
+            'kategori' => $this->request->getPost('kategori'),
+            'kode_ddc' => $this->request->getPost('kode_ddc'),
         ];
-        $model->insert($data);
 
-        return redirect()->to('/kategori');
+        $model = new KategoriModel();
+        $id = (int)$this->request->getPost('id');
+
+        if($id > 0){
+            $model->update($id, $data);
+        }else{
+            $model->insert($data);
+        }
+
+        return redirect()->to(base_url('kategori'));
     }
 
-    public function edit($id)
-    {
-        // Menampilkan form edit pengguna
-        $model = new KategoriModel();
-        $data['kategori'] = $model->find($id);
-
-        return view('kategori/edit', $data);
+    public function form(){
+        return view('kategorii/form');
     }
 
-    public function update($id)
-    {
-        // Memperbarui data pengguna
-        $model = new KategoriModel();
-        $data = [
-            'username' => $this->request->getPost('username'),
-            'password' => $this->request->getPost('password'),
-            'email'    => $this->request->getPost('email'),
-        ];
-        $model->update($id, $data);
-
-        return redirect()->to('/kategori');
+    public function edit($id){
+        $r = (new KategoriModel())->where('id', $id)->first();
+        return view('kategorii/form', [
+            'data' => $r
+        ]);
     }
 
-    public function delete($id)
-    {
-        // Menghapus pengguna
-        $model = new KategoriModel();
-        $model->delete($id);
-
-        return redirect()->to('/kategori');
+    public function hapus(){
+        $id = $this->request->getPost('id');
+        $m = new KategoriModel();
+        $m->delete($id);
+        return redirect()->to(base_url('kategori'));
     }
 }
