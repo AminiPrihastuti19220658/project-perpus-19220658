@@ -4,19 +4,38 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BookModel extends Model
+class PenerbitModel extends Model
 {
-    protected $table = 'books';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['title', 'author', 'publication_year', 'publisher_id'];
+    protected $DBGroup          = 'default';
+    protected $table            = 'tb_penerbitt';
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = false;
+    protected $protectFields    = false;
+    protected $allowedFields    = ['*'];
 
-    public function getBooks()
-    {
-        return $this->findAll();
-    }
+    // Dates
+    protected $useTimestamps = false;
+    protected $dateFormat    = 'datetime';
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+    protected $deletedField  = 'deleted_at';
 
-    public function getBookById($id)
-    {
-        return $this->find($id);
-    }
+    // Validation
+    protected $validationRules      = [];
+    protected $validationMessages   = [];
+    protected $skipValidation       = false;
+    protected $cleanValidationRules = true;
+
+    // Callbacks
+    protected $allowCallbacks = true;
+    protected $beforeInsert   = [];
+    protected $afterInsert    = [];
+    protected $beforeUpdate   = [];
+    protected $afterUpdate    = [];
+    protected $beforeFind     = [];
+    protected $afterFind      = [];
+    protected $beforeDelete   = [];
+    protected $afterDelete    = [];
 }
