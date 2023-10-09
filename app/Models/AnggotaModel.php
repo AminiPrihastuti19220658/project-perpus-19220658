@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class AnggotaModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'anggotas';
+    protected $table            = 'tb_anggotaa';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $protectFields    = false;
+    protected $allowedFields    = ['*'];
 
     // Dates
     protected $useTimestamps = false;
