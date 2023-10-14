@@ -26,7 +26,7 @@ class BukuController extends BaseController
 
     public function menhapusbuku ()
     {
-        
+
     }
 
 }
