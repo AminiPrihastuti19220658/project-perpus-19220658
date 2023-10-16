@@ -7,10 +7,10 @@
 
 <h1>Create Penerbit</h1>
 
-<form action="<?= base_url('penerbit/create') ?>" method="post">
+<form action="<?= base_url('penerbitt/create') ?>" method="post">
     <input type="hidden" name="id" value="<?=$data['id'] ?? ''?>" />
     <label for="namapenerbit">Nama Penerbit</label>
-    <input type="text" name="penerbitt" value="<?=$data['penerbit'] ?? ''?>" required><br>
+    <input type="text" name="penerbit" value="<?=$data['penerbit'] ?? ''?>" required><br>
 
     <label for="kota">Kota</label>
     <input type="text" name="kota" value="<?=$data['kota'] ?? ''?>" required><br>

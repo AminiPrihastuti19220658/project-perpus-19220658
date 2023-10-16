@@ -17,7 +17,7 @@ class PenerbitController extends BaseController
     public function create()
     {
         $data = [
-            'penerbit' => $this->request->getPost('penerbitt'),
+            'penerbit' => $this->request->getPost('penerbit'),
             'kota'         => $this->request->getPost('kota')
         ]; 
 
