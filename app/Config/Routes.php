@@ -19,3 +19,8 @@ $routes->get('/pengguna/edit/(:num)', 'PenggunaController::edit/$1');
 $routes->post('/pengguna/create', 'PenggunaController::create');
 $routes->post('/pengguna/hapus', 'PenggunaController::hapus');
 
+$routes->get('/penerbitt', 'PenerbitController::index');
+$routes->get('/penerbitt/form', 'PenerbitController::form');
+$routes->get('/penerbitt/edit/(:num)', 'PenerbitController::edit/$1');
+$routes->post('/penerbitt/create', 'PenerbitController::create');
+$routes->post('/penerbitt/hapus', 'PenerbitController::hapus');
