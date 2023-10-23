@@ -1,5 +1,6 @@
-CREATE DATABASE perpustakaan_19220600;
-USE perpustakaan_19220600;
+CREATE DATABASE perpustakaan_19220658;
+
+USE perpustakaan_19220658;
 
 CREATE TABLE tb_penggunaa(
 id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -59,12 +60,12 @@ FOREIGN KEY(tb_buku_id) REFERENCES tb_buku(id) ON UPDATE CASCADE ON DELETE CASCA
 CREATE TABLE tb_peminjaman(
 id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
 tgl_peminjaman DATETIME NOT NULL,
-tgl_pegembalian DATETIME NULL,
 tgl_pengembalian DATETIME NULL,
 tb_penggunaa_id_peminjaman INT UNSIGNED NOT NULL,
 tb_penggunaa_id_pengembalian INT UNSIGNED NULL,
 tb_anggotaa_id INT UNSIGNED NOT NULL,
 tb_koleksibuku_id INT UNSIGNED,
+tb_buku_id INT UNSIGNED,
 denda DECIMAL(10,2),
 FOREIGN KEY(tb_penggunaa_id_peminjaman) REFERENCES tb_penggunaa(id)
 	ON UPDATE CASCADE,
@@ -73,5 +74,7 @@ FOREIGN KEY(tb_penggunaa_id_pengembalian)REFERENCES tb_penggunaa(id)
 FOREIGN KEY(tb_anggotaa_id) REFERENCES tb_anggotaa(id)
 	ON UPDATE CASCADE,
 FOREIGN KEY(tb_koleksibuku_id) REFERENCES tb_koleksibuku(id)
+	ON UPDATE CASCADE
+FOREIGN KEY(tb_buku_id) REFERENCES tb_buku_id(id)
 	ON UPDATE CASCADE
 )ENGINE=INNODB;
