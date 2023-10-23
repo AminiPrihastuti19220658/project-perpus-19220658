@@ -18,3 +18,7 @@ $routes->get('/koleksibuku/form', 'KoleksiBukuController::form');
 $routes->get('/koleksibuku/edit/(:num)', 'KoleksiBukuController::edit/$1');
 $routes->post('/koleksibuku/create', 'KoleksiBukuController::create');
 $routes->post('/koleksibuku/hapus', 'KoleksiController::hapus');
+
+$routes->get('/login', 'LoginController::index');
+$routes->post('/login', 'LoginController::ceklogin');
+$routes->get('/logout', 'LoginController::logout');
