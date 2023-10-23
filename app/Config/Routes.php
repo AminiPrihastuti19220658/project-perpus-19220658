@@ -45,6 +45,11 @@ $routes->get('/pengguna/edit/(:num)', 'PenggunaController::edit/$1');
 $routes->post('/pengguna/create', 'PenggunaController::create');
 $routes->post('/pengguna/hapus', 'PenggunaController::hapus');
 
+
+$routes->get('/login', 'LoginController::index');
+$routes->post('/login', 'LoginController::ceklogin');
+$routes->get('/logout', 'LoginController::logout');
+
 $routes->get('/penerbitt', 'PenerbitController::index');
 $routes->get('/penerbitt/form', 'PenerbitController::form');
 $routes->get('/penerbitt/edit/(:num)', 'PenerbitController::edit/$1');
