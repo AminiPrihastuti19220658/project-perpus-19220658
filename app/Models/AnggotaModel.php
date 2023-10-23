@@ -13,6 +13,7 @@ class AnggotaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = false;
+    protected $allowedFields    = ['email','katasandi'];
     protected $allowedFields    = ['*'];
 
     // Dates
@@ -39,3 +40,4 @@ class AnggotaModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 }
+
