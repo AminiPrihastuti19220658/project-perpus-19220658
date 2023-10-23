@@ -3,7 +3,7 @@
         border:1 px solid black;
     }
 </style>
-<a href="<?=base_url('/penerbitt')?>">Tambah data</a>
+<a href="<?=base_url('/penerbitt/form')?>">Tambah data</a>
 <table  style="border: 1px solid black;">
     <thead>
         <tr>
